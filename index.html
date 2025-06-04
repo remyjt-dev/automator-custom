@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automator Customizer Script</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .copy-btn {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            float: right;
+            margin-top: -10px;
+        }
+        .copy-btn:hover {
+            background: #005a87;
+        }
+        h1 { color: #2c3e50; }
+        h2 { color: #34495e; }
+        .highlight { background: #fff3cd; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>Automator Customizer Script</h1>
+    
+    <p>This script controls AI Agents visibility based on SaaS plan status by checking your API and hiding premium features appropriately.</p>
+
+    <h2>Quick Start</h2>
+    <p>Add this script tag to any page where you want to control AI Agents visibility:</p>
+    
+    <div class="code-block">
+        <button class="copy-btn" onclick="copyToClipboard('script-tag')">Copy</button>
+        <code id="script-tag">&lt;script src="https://YOUR-USERNAME.github.io/automator-custom/automator-customizer.min.js"&gt;&lt;/script&gt;</code>
+    </div>
+
+    <p class="highlight">Replace YOUR-USERNAME and YOUR-REPO-NAME with your actual GitHub details.</p>
+
+    <h2>How It Works</h2>
+    <ul>
+        <li>Automatically extracts location_id from URLs</li>
+        <li>Makes API calls to check SaaS plan status</li>
+        <li>Hides AI Agents for premium plans (Professional, Ultimate, Premium)</li>
+        <li>Shows AI Agents only for basic plans</li>
+        <li>Handles errors securely by hiding features</li>
+    </ul>
+
+    <h2>Files Available</h2>
+    <ul>
+        <li><a href="automator-customizer.js">automator-customizer.js</a> - Full readable version</li>
+        <li><a href="automator-customizer.min.js">automator-customizer.min.js</a> - Minified version for embedding</li>
+    </ul>
+
+    <h2>Setup Instructions</h2>
+    <ol>
+        <li>Fork or download these files to your GitHub repository</li>
+        <li>Enable GitHub Pages in your repository settings</li>
+        <li>Update the script URL with your GitHub username and repository name</li>
+        <li>Add the script tag to your target pages</li>
+    </ol>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>

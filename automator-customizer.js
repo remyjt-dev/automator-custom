@@ -84,7 +84,7 @@
         // Inject into document head
         document.head.appendChild(style);
         
-        console.log(`AI Agents CSS injected: display: ${displayValue}`);
+        // CSS injected silently
     }
     
     // Process SaaS information (console logging only)
@@ -92,13 +92,7 @@
         // Special override for specific location_id
         if (saasData.location_id === 'QJ103qxfEO9Dj2mFP0BJ') {
             toggleAIAgentsVisibility(true);
-            console.log('SaaS Plan Check Results:', {
-                status: 'Special Location Override',
-                plan: saasData.response.saas_plan || 'Unknown',
-                billing: saasData.response.saas_pricing || 'Unknown',
-                locationId: saasData.location_id,
-                aiAgentsVisibility: 'visible (override)'
-            });
+            console.log(`${saasData.response.saas_plan || 'Unknown'}: show (override)`);
             return;
         }
         
@@ -106,22 +100,14 @@
         const shouldHide = shouldHideAIAgents(saasData.response.saas_plan);
         toggleAIAgentsVisibility(!shouldHide);
         
-        // Log results to console only
-        const statusText = shouldHide ? 'Premium Plan Active' : 'Basic Plan Active';
-        const visibilityText = shouldHide ? 'hidden' : 'visible';
-        
-        console.log('SaaS Plan Check Results:', {
-            status: statusText,
-            plan: saasData.response.saas_plan || 'Unknown',
-            billing: saasData.response.saas_pricing || 'Unknown',
-            locationId: saasData.location_id || 'N/A',
-            aiAgentsVisibility: visibilityText
-        });
+        // Log simple result
+        const action = shouldHide ? 'hide' : 'show';
+        console.log(`${saasData.response.saas_plan || 'Unknown'}: ${action}`);
     }
     
     // Log loading state
     function showLoadingIndicator() {
-        console.log('SaaS Check: Starting API request...');
+        // Loading silently
     }
     
     // Log error message
@@ -129,11 +115,8 @@
         // Hide AI Agents elements when there's an API error
         toggleAIAgentsVisibility(false);
         
-        // Log error to console only
-        console.error('SaaS Check Failed:', {
-            error: message,
-            aiAgentsVisibility: 'hidden'
-        });
+        // Log simple error
+        console.log(`Error: hide`);
     }
     
     // Main execution function
@@ -141,13 +124,10 @@
         const locationId = getLocationIdFromUrl();
         
         if (!locationId) {
-            console.warn('SaaS Check: No location_id found in URL');
-            // Hide AI Agents elements when no location_id is found
+            console.log('No location: hide');
             toggleAIAgentsVisibility(false);
             return;
         }
-        
-        console.log('SaaS Check: Found location_id:', locationId);
         
         try {
             showLoadingIndicator();

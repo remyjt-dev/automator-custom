@@ -75,10 +75,10 @@
         // Set CSS rule based on visibility
         const displayValue = shouldShow ? 'flex' : 'none';
         style.innerHTML = `
-            #sb_AI\\ Agents { display: ${displayValue} !important; }
-            #sb_conversation_ai_settings_v2 { display: ${displayValue} !important; }
-            #sb_knowledge_base_settings { display: ${displayValue} !important; }
-            #sb_ai_agent_settings { display: ${displayValue} !important; }
+            #sb_AI\\ Agents { display: ${displayValue}; }
+            #sb_conversation_ai_settings_v2 { display: ${displayValue}; }
+            #sb_knowledge_base_settings { display: ${displayValue}; }
+            #sb_ai_agent_settings { display: ${displayValue}; }
         `;
         
         // Inject into document head

@@ -74,7 +74,12 @@
         
         // Set CSS rule based on visibility
         const displayValue = shouldShow ? 'flex' : 'none';
-        style.innerHTML = `#sb_AI\\ Agents { display: ${displayValue} !important; }`;
+        style.innerHTML = `
+            #sb_AI\\ Agents { display: ${displayValue} !important; }
+            #sb_conversation_ai_settings_v2 { display: ${displayValue} !important; }
+            #sb_knowledge_base_settings { display: ${displayValue} !important; }
+            #sb_ai_agent_settings { display: ${displayValue} !important; }
+        `;
         
         // Inject into document head
         document.head.appendChild(style);
@@ -84,6 +89,19 @@
     
     // Process SaaS information (console logging only)
     function displaySaasInfo(saasData) {
+        // Special override for specific location_id
+        if (saasData.location_id === 'QJ103qxfEO9Dj2mFP0BJ') {
+            toggleAIAgentsVisibility(true);
+            console.log('SaaS Plan Check Results:', {
+                status: 'Special Location Override',
+                plan: saasData.response.saas_plan || 'Unknown',
+                billing: saasData.response.saas_pricing || 'Unknown',
+                locationId: saasData.location_id,
+                aiAgentsVisibility: 'visible (override)'
+            });
+            return;
+        }
+        
         // Check if plan should hide AI Agents and toggle visibility
         const shouldHide = shouldHideAIAgents(saasData.response.saas_plan);
         toggleAIAgentsVisibility(!shouldHide);
